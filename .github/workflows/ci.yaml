@@ -1,7 +1,7 @@
 name: Docker
 on:
   push:
-    branches: [ master ]
+    branches: [ master, refactoring-docker-image ]
 
 jobs:
   build_and_push:
