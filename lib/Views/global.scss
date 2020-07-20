@@ -74,7 +74,7 @@ body {
     background: $dark;
     &:focus,
     &:hover {
-      color: white;
+      color: $color-secondary;
     }
   }
 
@@ -82,11 +82,11 @@ body {
   .tjs-legend__locationBar,
   .tjs-legend__distanceLegend {
     background: $dark;
-    color: white;
+    color: $color-secondary;
     &:hover,
     &:focus {
       background: $dark;
-      color: white;
+      color: $color-secondary;
     }
   }
 
@@ -154,7 +154,7 @@ body {
 
   .tjs-_buttons__btn-primary {
     &:hover {
-      color: white;
+      color: $color-secondary;
     }
   }
 
@@ -163,11 +163,16 @@ body {
   .tjs-data-catalog-group__btn--catalog {
     &:hover {
       background: $color-primary-light;
-      color: white;
+      color: $color-secondary;
     }
     &:focus {
       background: $color-primary;
-      color: white;
+      color: $color-secondary;
+    }
+  }
+  .tjs-_buttons__btn-transparent {
+    &:hover {
+      background: $color-secondary;
     }
   }
   // The currently selected item in the list
