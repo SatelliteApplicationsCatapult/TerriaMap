@@ -23,5 +23,5 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: satapps/terriamap
         dockerfile: ./deploy/docker-alternate/alternate.Dockerfile
-        tags: $SHORTSHA-solomon
+        tags: ${{ $SHORTSHA }}-solomon
         target: solomon_build
