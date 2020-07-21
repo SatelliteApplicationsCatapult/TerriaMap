@@ -5,9 +5,6 @@ on:
   pull_request:
     branches:
       - master
-env:
-  SHORTSHA: $(git rev-parse --short=4 ${{ github.sha }})
-
 jobs:
   build_and_push:
     runs-on: ubuntu-latest
@@ -17,11 +14,13 @@ jobs:
       uses: actions/checkout@v2
     
     - name: Build and push Docker images for Solomon
-      uses: docker/build-push-action@v1.1.0   
+      uses: docker/build-push-action@v1.1.0
+      env:
+          SHORT_SHA: ${{ git rev-parse --short }}   
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: satapps/terriamap
         dockerfile: ./deploy/docker-alternate/alternate.Dockerfile
-        tags: ${{ $SHORTSHA }}-solomon
+        tags: $SHORTSHA-solomon
         target: solomon_build
