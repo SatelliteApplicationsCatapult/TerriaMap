@@ -19,7 +19,7 @@ jobs:
 
     - name: Set branch name
       id: branch
-      run: echo "::set-output name=branch_name::$(git branch --show-current)"
+      run: echo "::set-output name=branch_name::$(git rev-parse --abbrev-ref HEAD)"
 
     - name: Build and push Docker images for Solomon
       uses: docker/build-push-action@v1.1.0
