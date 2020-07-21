@@ -20,12 +20,14 @@ jobs:
     - name: Set branch name
       id: branch
       run: |
-       if [ ${{ github.event }} == "pull_request" ];then
-         echo "::set-output name=branch_name::${{ github.head_ref }}"
-       elif [ ${{ github.event }} == "push" ]
-       then
-         echo "::set-output name=branch_name::${{ github.ref }}"
-       fi
+        if [ ${{ github.event }} == "pull_request" ];then
+          echo "::set-output name=branch_name::${{ github.head_ref }}"
+        elif [ ${{ github.event }} == "push" ]
+        then
+          echo "::set-output name=branch_name::${{ github.ref }}"
+        else
+          echo "${{ github.event }}"
+        fi
 
     - name: Build and push Docker images for Solomon
       uses: docker/build-push-action@v1.1.0
