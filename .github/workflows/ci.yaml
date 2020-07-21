@@ -5,6 +5,8 @@ on:
   pull_request:
     branches:
       - master
+env:
+  SHORTSHA: $(git rev-parse --short=4 ${{ github.sha }})
 
 jobs:
   build_and_push:
@@ -21,5 +23,5 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: satapps/terriamap
         dockerfile: ./deploy/docker-alternate/alternate.Dockerfile
-        tags: ${GITHUB_SHA::8}-solomon
+        tags: $SHORTSHA-solomon
         target: solomon_build
