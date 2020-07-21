@@ -20,13 +20,13 @@ jobs:
     - name: Set branch name
       id: branch
       run: |
-        if [ ${{ github.event }} == "pull_request" ];then
+        if [ ${{ github.event_name }} == "pull_request" ];then
           echo "::set-output name=branch_name::${{ github.head_ref }}"
-        elif [ ${{ github.event }} == "push" ]
+        elif [ ${{ github.event_name }} == "push" ]
         then
           echo "::set-output name=branch_name::${{ github.ref }}"
         else
-          echo "${{ github.event }}"
+          echo "${{ github.event_name }}"
         fi
 
     - name: Build and push Docker images for Solomon
