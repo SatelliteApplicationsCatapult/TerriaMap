@@ -21,5 +21,5 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: satapps/terriamap
         dockerfile: ./deploy/docker-alternate/alternate.Dockerfile
-        tags: ${{git rev-parse --short HEAD }}-solomon
+        tags: ${GITHUB_SHA::8}-solomon
         target: solomon_build
