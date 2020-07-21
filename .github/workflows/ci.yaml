@@ -13,6 +13,10 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     
+    - name: Set outputs
+      id: vars
+      run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+
     - name: Build and push Docker images for Solomon
       uses: docker/build-push-action@v1.1.0
       with:
@@ -20,5 +24,5 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: satapps/terriamap
         dockerfile: ./deploy/docker-alternate/alternate.Dockerfile
-        tags: $(echo ${GITHUB_SHA} | cut -c1-8)-solomon
+        tags: $(echo ${{ steps.vars.outputs.sha_short }})-solomon
         target: solomon_build
