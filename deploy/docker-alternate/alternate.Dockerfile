@@ -16,7 +16,7 @@ RUN rm wwwroot/config.json && ln -s /etc/config/client/config.json wwwroot/confi
 RUN cp -r node_modules/@juanezm/terriajs node_modules && rm -rf node_modules/@juanezm/
 
 FROM build as solomon_build
-RUN cp -r wwwroot/help/img/help_solomon/ wwwroot/help/img/
+RUN cp -r wwwroot/help/img/help_solomon/. wwwroot/help/img/.
 RUN cp wwwroot/images/SI_high.png wwwroot/images/help_logo.png
 RUN npm run gulp
 
