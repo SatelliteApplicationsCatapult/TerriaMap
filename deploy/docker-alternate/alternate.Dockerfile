@@ -22,4 +22,5 @@ RUN npm run gulp
 
 FROM build as vanuatu_build
 RUN sed -i 's/hsl(209, 79%, 42%)/hsl(44, 92%, 45%)/' lib/Styles/variables.scss
+RUN sed -i 's/<2>Solomon Islands.</2>/<2>Vanuatu.</2>/' node_modules/terriajs/lib/Language/en/translation.json
 RUN npm run gulp
